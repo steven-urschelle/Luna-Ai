@@ -34,7 +34,7 @@ Luna AI is an open-source AI model developed by Luna OpenLabs for text classific
 To clone the repository, run the following command:
 
 bash
-git clone https://github.com/yourusername/LunaAI.git
+git clone https://github.com/LunaOpenLabs/Luna-Ai.git
 
 ### Install Requirements
 To install the required packages, use:
