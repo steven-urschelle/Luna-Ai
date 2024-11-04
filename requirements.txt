@@ -1,5 +1,5 @@
 flask
 pandas
-datasets
-huggingface_hub
+datasets #required to read and classify the data from the CSV file.
+huggingface_hub #required to connect with hugging face library.
 scikit-learn
