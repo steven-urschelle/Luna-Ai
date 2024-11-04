@@ -1,6 +1,7 @@
 # Luna AI
 
-Luna AI is an open-source AI model developed by Luna OpenLabs for text classification tasks. Leveraging the BERT architecture, this model is designed to classify text into predefined categories efficiently and accurately.
+Luna AI is an open-source AI model developed by Luna OpenLabs for text classification tasks. Leveraging the BERT architecture, this model is designed to classify text into predefined categories efficiently and accurately. 
+Now available with a chat interface to test the classification of your data.
 
 ## Table of Contents
 
