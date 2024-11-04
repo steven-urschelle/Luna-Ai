@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-import os
+from save_model import save_to_csv  # Import your save function
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -25,16 +25,16 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     user_input = request.form['user_input']
-    user_label = request.form['user_label']  # Assume the label is sent from the frontend
+    user_label = request.form['user_label']  # Optional label input
+
     user_input_vectorized = vectorizer.transform([user_input])
     
     # Make a prediction
     prediction = model.predict(user_input_vectorized)[0]
 
-    # Update data.csv if the user provides a label
+    # Save new data if a label is provided
     if user_label:
-        new_data = pd.DataFrame([[user_input, user_label]], columns=['text', 'label'])
-        new_data.to_csv(data_file, mode='a', header=False, index=False)
+        save_to_csv(user_input, user_label)  # Use your save function
 
         # Re-train the model with the updated data
         global texts, labels, model, X
