@@ -1,6 +1,5 @@
 flask
-torch
-transformers
+pandas
 datasets
 huggingface_hub
 scikit-learn
