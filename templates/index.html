@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna AI Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Luna AI</h1>
+        <div id="chat-box">
+            <div id="response"></div>
+        </div>
+        <form id="chat-form">
+            <input type="text" name="user_input" placeholder="Type your message here" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/chat', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.text();
+            document.getElementById('response').innerText += 'You: ' + formData.get('user_input') + '\n';
+            document.getElementById('response').innerText += 'Luna: ' + data + '\n';
+            form.reset();
+            document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
+        };
+    </script>
+</body>
+</html>
